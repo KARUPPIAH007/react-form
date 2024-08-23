@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import GetReservation from './components/GetReservation';
+import BookTickets from './pages/BookTickets'; // Adjust the path if necessary
+import GetReservationsById from './pages/GetReservationsById'; // Adjust the path if necessary
+import UpdateReservation from './pages/UpdateReservation'; // Import UpdateReservation page
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <a className="navbar-brand" href="#">My Reservations App</a>
+        </nav>
+
+        <div className="container mt-4">
+          <Routes>
+            <Route path="/" element={<GetReservation />} />
+            <Route path="/book-tickets" element={<BookTickets />} />
+            <Route path="/reservation-details" element={<GetReservationsById />} />
+            <Route path="/update-reservation/:id" element={<UpdateReservation />} /> 
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
